@@ -1,0 +1,48 @@
+<welcome>
+ ________   ________   ________    ________    _______    ________  _________        ___   ___     
+|\   ____\ |\   __  \ |\   ___  \ |\   ___  \ |\  ___ \  |\   ____\|\___   ___\     |\  \ |\  \    
+\ \  \___| \ \  \|\  \\ \  \\ \  \\ \  \\ \  \\ \   __/| \ \  \___|\|___ \  \_|     \ \  \\_\  \   
+ \ \  \     \ \  \\\  \\ \  \\ \  \\ \  \\ \  \\ \  \_|/__\ \  \        \ \  \       \ \______  \  
+  \ \  \____ \ \  \\\  \\ \  \\ \  \\ \  \\ \  \\ \  \_|\ \\ \  \____    \ \  \       \|_____|\  \ 
+   \ \_______\\ \_______\\ \__\\ \__\\ \__\\ \__\\ \_______\\ \_______\   \ \__\             \ \__\
+    \|_______| \|_______| \|__| \|__| \|__| \|__| \|_______| \|_______|    \|__|              \|__|
+
+                                       Welcome to Connect 4
+<startGame>
+%s plays first. You can enter \'q\' to quit the game.
+<draw>
+The game ended in a tie.
+<win>
+Congratulations! %s won this round!
+<record>
+The current score is %s: %d, %s: %d.
+<goodbye>
+Good bye!
+<computerName>
+Computer
+C4B-2000
+Write-only Memory
+/brain/null
+404IQ
+<askName>
+Please enter the name of player %d: 
+<singlePlayer>
+Do you want to play against the computer? 
+<promptMove>
+%s, please input a number where you'd like to place your %c: 
+<playAgain>
+Would you like to play again? (y/n): 
+<validateNameResponse>
+[a-zA-Z]{1,255}'?-?[a-zA-Z]{1,255}
+<validateBoardResponse>
+[1-7]|q|quit|exit
+<validateYesNoResponse>
+y|yes|n|no
+<errorBoardResponse>
+Invalid input, please choose a number on the board, or \'q\' to quit.
+<errorNameResponse>
+Invalid input, your name must be longer than 2 valid characters.
+<errorYesNoResponse>
+Invalid input, you must respond yes or no. 
+<errorSpaceTaken>
+Invaid input, column is full. 

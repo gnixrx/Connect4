@@ -1,0 +1,30 @@
+// Description
+// 
+// Connect 4 is a two-player game played in turns. 
+// The game is played on a 7 by 6 board where tokens are played by choosing 
+// a column to drop your token which falls to the lowest row available. The 
+// objective is to connect 4 of your tokens in a row, column, or diagonal. 
+// To fulfill the requirements the game records will be stored in a file so 
+// that you can keep track of your wins and losses as you play.
+
+// Pseudocode for Connect-4 Game
+// 
+// Welcome message
+// Ask if you want to play vs the computer
+// Ask for player 1 name
+// If not a single player game ask for player 2 name
+// 
+// While playing
+//   Create a board to play on
+//   While the game has not been won
+//     Ask current player for a move
+//        Valid inputs should be 1-7
+//     Check to see if this move is a valid move
+//        Valid move would be in a column not full
+//     Check to see if the move wins the game
+//        Win states would be horizontal, vertical, or diagonal 4 tokens together
+//     If the the game isn't won change current player to other player and repeat
+//   Display a win for the person who won the game!
+//   Ask to play again
+//
+// Good bye message
