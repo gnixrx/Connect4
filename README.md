@@ -1,4 +1,4 @@
-![logo]:(https://github.com/gnixrx/Connect4/blob/master/connect4.png)
+![logo](https://github.com/gnixrx/Connect4/blob/master/connect4.png)
 
 # Description
 
