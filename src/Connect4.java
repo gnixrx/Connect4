@@ -102,7 +102,7 @@ public class Connect4 {
             if (board.rankBoard() != GameState.PLAY) {
                 if (board.rankBoard() == GameState.TIE) {
                     // Display tie string
-                    System.out.print("\n" + Loc.str_draw());
+                    System.out.print("\n" + Loc.str_draw() + "\n");
                 } else {
                     // Display winner string
                     System.out.printf("\n" + Loc.str_win(), currentPlayer.getName());
