@@ -26,21 +26,6 @@ public enum Token {
         return symbol;
     }
 
-    // Return winning combo 
-    // Input: int number of rows
-    // Output: String token symbols
-    // 
-    public String combo(int rows) {
-        String output;
-        output = "";
-
-        for (int count = 0; count < rows; ++count) {
-            output += symbol;
-        }
-
-        return output;
-    }
-
     // Evaluate if one of the symbols match a token
     // Input: symbol you want to match to this enum
     // Output: boolean success

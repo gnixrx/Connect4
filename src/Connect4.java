@@ -29,21 +29,25 @@ public class Connect4 {
         Player player2;
         boolean singlePlayer;
 
-        Controls controls = new Controls();
+        Input<String> name = new Input<String>(String.class, Loc.validate_NameResponse(), Loc.str_errorNameResponse());
+        Input<Boolean> yn = new Input<Boolean>(Boolean.class, Loc.validate_YesNoResponse(), Loc.str_errorYesNoResponse());
+        Input<GameInput> human = new Input<GameInput>(GameInput.class, Loc.validate_BoardResponse(), Loc.str_errorBoardResponse());
+        Input<Difficulty> difficulty = new Input<Difficulty>(Difficulty.class, Loc.validate_DifficultyResponse(), Loc.str_errorDifficultyResponse());
+
         Random coinToss = new Random();
         boolean playing = true;
         
         // Welcome Message
         System.out.println(Loc.str_welcome());
+        
+        player1 = new Player(name.ask(String.format(Loc.str_askName(), 1)));
 
-        player1 = new Player(controls.askValidName(1));
-
-        singlePlayer = controls.askValidYesNo(Loc.str_askSinglePlayer());
+        singlePlayer = yn.ask(Loc.str_askSinglePlayer());
 
         if (singlePlayer) {
-            player2 = new Computer(Loc.str_computerName());
+            player2 = new Computer(Loc.str_computerName(), difficulty.ask(Loc.str_askDifficulty()));
         } else {
-            player2 = new Player(controls.askValidName(2));
+            player2 = new Player(name.ask(String.format(Loc.str_askName(), 2)));
         }
 
         // Continue playing loop
@@ -59,7 +63,7 @@ public class Connect4 {
             
             board.print();
 
-            System.out.printf(Loc.str_startGame(), currentPlayer.getName());
+            System.out.printf(Loc.str_startGame() + "\n", currentPlayer.getName());
 
             // Main Game Loop
             while (board.rankBoard() == GameState.PLAY && playing) {
@@ -69,7 +73,10 @@ public class Connect4 {
                     ((Computer) currentPlayer).updateBoard(board);
                     move = new Move(GameInput.fromValue(((Computer) currentPlayer).findNextMove()), currentPlayer.getToken());
                 } else {
-                    move = new Move(controls.askValidGameInput(currentPlayer), currentPlayer.getToken());
+                    move = new Move(human.ask(
+                                        String.format(Loc.str_promptMove(), currentPlayer.getName(), 
+                                        currentPlayer.getToken().symbol())), currentPlayer.getToken()
+                                    );
                 }
 
                 // The move is quit so let's exit the game loop
@@ -113,7 +120,7 @@ public class Connect4 {
                 }
 
                 // Ask to continue playing
-                if (!controls.askValidYesNo(Loc.str_playAgain())) {
+                if (!yn.ask(Loc.str_playAgain())) {
                     // Exit
                     playing = false;
                     continue;

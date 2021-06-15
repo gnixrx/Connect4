@@ -350,9 +350,6 @@ public class Board {
         int countA = Collections.frequency(lineCheck, Token.A.symbol());
         int countB = Collections.frequency(lineCheck, Token.B.symbol());
 
-        // TODO: There's an instance where the AI won't recognise to block where the human can trap the AI into not anticipating this situation.
-        // 3 in a row with 2 open spaces on either side, or any other combination where there's 2 wins available.
-    
         // If both players don't own territory this line
         if (!(lineCheck.contains(Token.A.symbol()) && lineCheck.contains(Token.B.symbol()))) {
 

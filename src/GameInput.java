@@ -10,7 +10,7 @@ public enum GameInput {
     FIVE (4), 
     SIX (5), 
     SEVEN (6),
-    QUIT (3482191);
+    QUIT (-1);
 
     // Constructor
     private final int index; // Symbol that is played

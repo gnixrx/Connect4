@@ -32,17 +32,23 @@ Do you want to play against the computer?
 %s, please input a number where you'd like to place your %c: 
 <playAgain>
 Would you like to play again? (y/n): 
+<askDifficulty>
+What difficulty would you like to play against (1) Easy (2) Medium (3) Hard: 
 <validateNameResponse>
 [a-zA-Z]{1,255}'?-?[a-zA-Z]{1,255}
 <validateBoardResponse>
-[1-7]|q|quit|exit
+[1-7]|q|quit|e|exit
 <validateYesNoResponse>
-y|yes|n|no
+n|y|no|yes
+<validateDifficultyResponse>
+easy|medium|hard|1|2|3
 <errorBoardResponse>
-Invalid input, please choose a number on the board, or \'q\' to quit.
+Invalid input: Please choose a number on the board, or \'q\' to quit.
 <errorNameResponse>
-Invalid input, your name must be longer than 2 valid characters.
+Invalid input: Your name must be longer than 2 valid characters.
 <errorYesNoResponse>
-Invalid input, you must respond yes or no. 
+Invalid input: You must respond yes or no.
 <errorSpaceTaken>
-Invaid input, column is full. 
+Invalid input: Column is full.
+<errorDifficultyResponse>
+Invalid input: You must respond easy, medium, or hard.

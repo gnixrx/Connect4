@@ -8,19 +8,19 @@ import java.util.Random;
 public class Computer extends Player {
     Board currBoard;
     Board testBoard;
-    boolean isRandom;
+    Difficulty difficulty;
     
     // Constructor
     public Computer(String name) {
         super(name);
         currBoard = new Board();
-        isRandom = false;
+        difficulty = Difficulty.EASY;
     }
 
-    public Computer(String name, boolean onlyRandom) {
+    public Computer(String name, Difficulty difficulty) {
         super(name);
         currBoard = new Board();
-        isRandom = onlyRandom;
+        this.difficulty = difficulty;
     }
 
     // Sets the board object so that we can manipulate it with AI.
@@ -39,7 +39,7 @@ public class Computer extends Player {
         Random randGen = new Random();
         int moveIndex = -1;
 
-        if (currBoard.getMoveList().size() > 1 && !isRandom) {
+        if (currBoard.getMoveList().size() > 1 && difficulty != Difficulty.EASY) {
 
             // Create another board to manipulate
             testBoard = new Board(currBoard);
@@ -52,7 +52,7 @@ public class Computer extends Player {
                 testBoard.playMove(new Move(GameInput.fromValue(index), getToken()));
 
                 // Test the opponent play if this play is made, and the tree beyond
-                int moveScore = minimax(bestScore, 3, false);
+                int moveScore = minimax(bestScore, difficulty.value(), Integer.MIN_VALUE, Integer.MAX_VALUE, false);
 
                 // Unplay the move
                 testBoard.removeMove(1);
@@ -104,7 +104,7 @@ public class Computer extends Player {
     // Input: board, depth, isMaximizing
     // Output: score rating for a move concidering the depth of the move.
     // 
-    private int minimax(int score, int depth, boolean isMaximizing) {
+    private int minimax(int score, int depth, int alpha, int beta, boolean isMaximizing) {
         // Bottom of tree didn't find any win or loss return last move score.
         if (depth <= 0) {
             return testBoard.rankBoard(0);
@@ -131,10 +131,15 @@ public class Computer extends Player {
                 testBoard.playMove(new Move(GameInput.fromValue(validIndex), getToken()));
 
                 // Test the opponent play if this play is made, and the tree beyond
-                bestScore = Math.max(bestScore, minimax(bestScore, depth - 1, false));
+                bestScore = Math.max(bestScore, minimax(bestScore, depth - 1, alpha, beta, false));
                 
                 // Unplay the move
                 testBoard.removeMove(1);
+
+                if (bestScore >= beta) {
+                    break;
+                }
+                alpha = Math.max(alpha, bestScore);
             }
         } else { // Minimizer's turn
             bestScore = Integer.MAX_VALUE;
@@ -145,10 +150,15 @@ public class Computer extends Player {
                 testBoard.playMove(new Move(GameInput.fromValue(validIndex), Token.opponent(getToken())));
 
                 // Test the opponent play if this play is made, and the tree beyond
-                bestScore = Math.min(bestScore, minimax(bestScore, depth - 1, true));
+                bestScore = Math.min(bestScore, minimax(bestScore, depth - 1, alpha, beta, true));
                 
                 // Unplay the move
                 testBoard.removeMove(1);
+
+                if (bestScore <= alpha) {
+                    break;
+                }
+                beta = Math.min(beta, bestScore);
             }
         }
         

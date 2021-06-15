@@ -22,17 +22,20 @@ public class Loc {
     private static String askSinglePlayer;
     private static String promptMove;
     private static String playAgain;
+    private static String askDifficulty;
 
     // Validate Responses
     private static String validateNameResponse;
     private static String validateBoardResponse;
     private static String validateYesNoResponse;
+    private static String validateDifficultyResponse;
 
     // Error Responses
     private static String errorBoardResponse;
     private static String errorNameResponse;
     private static String errorYesNoResponse;
     private static String errorSpaceTaken;
+    private static String errorDifficultyResponse;
 
     public Loc() throws IOException {
         this.locale = Locale.getDefault();
@@ -63,17 +66,20 @@ public class Loc {
     public static String str_askSinglePlayer() { return askSinglePlayer; }
     public static String str_promptMove() { return promptMove; }
     public static String str_playAgain() { return playAgain; }
+    public static String str_askDifficulty() { return askDifficulty; }
 
     // Validations
     public static String validate_NameResponse() { return validateNameResponse; }
     public static String validate_BoardResponse() { return validateBoardResponse; }
     public static String validate_YesNoResponse() { return validateYesNoResponse; }
+    public static String validate_DifficultyResponse() { return validateDifficultyResponse; }
 
     // Error Responses
     public static String str_errorBoardResponse() { return errorBoardResponse; }
     public static String str_errorNameResponse() { return errorNameResponse; }
     public static String str_errorYesNoResponse() { return errorYesNoResponse; }
     public static String str_errorSpaceTaken() { return errorSpaceTaken; }
+    public static String str_errorDifficultyResponse() { return errorDifficultyResponse; }
 
     // Get locale
     public Locale getLocale() {
@@ -146,6 +152,9 @@ public class Loc {
                     case "<playAgain>":
                         playAgain = thisLine;
                         break;
+                    case "<askDifficulty>":
+                        askDifficulty = thisLine;
+                        break;
                     case "<validateNameResponse>":
                         validateNameResponse = thisLine;
                         break;
@@ -154,6 +163,9 @@ public class Loc {
                         break;
                     case "<validateYesNoResponse>":
                         validateYesNoResponse = thisLine;
+                        break;
+                    case "<validateDifficultyResponse>":
+                        validateDifficultyResponse = thisLine;
                         break;
                     case "<errorBoardResponse>":
                         errorBoardResponse = thisLine;
@@ -166,6 +178,9 @@ public class Loc {
                         break;
                     case "<errorSpaceTaken>":
                         errorSpaceTaken = thisLine;
+                        break;
+                    case "<errorDifficultyResponse>":
+                        errorDifficultyResponse = thisLine;
                         break;
                     default:
                         throw new FileNotFoundException("This localization file is not formatted properly and is invalid.");
