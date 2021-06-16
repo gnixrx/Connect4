@@ -74,8 +74,8 @@ public class Connect4 {
                     move = new Move(GameInput.fromValue(((Computer) currentPlayer).findNextMove()), currentPlayer.getToken());
                 } else {
                     move = new Move(human.ask(
-                                        String.format(Loc.str_promptMove(), currentPlayer.getName(), 
-                                        currentPlayer.getToken().symbol())), currentPlayer.getToken()
+                                        String.format(Loc.str_promptMove(), currentPlayer.getName(), currentPlayer.getToken().symbol())), 
+                                        currentPlayer.getToken()
                                     );
                 }
 
